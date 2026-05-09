@@ -8,6 +8,7 @@ package tugasproject;
 import dokter.Dokter;
 import dokter.Poliklinik;
 import dokter.Spesialis;
+import dokter.Dokter_PoliOld;
 import javax.swing.JFrame;
 
 /**
@@ -23,7 +24,7 @@ public class TugasProject {
 //        System.out.println("Hello World!");
 //        JFrame frame = new JFrame("Form Spesialis");
 
-        FormOpsi panel = new FormOpsi(); // panggil class kamu
+        FormOpsi2 panel = new FormOpsi2(); // panggil class kamu
 //        Barang panel = new Barang();
 //        frame.setContentPane(panel);
         panel.setSize(925, 700); // sesuaikan ukuran

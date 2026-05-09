@@ -17,21 +17,18 @@ import koneksi.koneksi;
  *
  * @author jeremiamanogi
  */
-public class Spesialis extends javax.swing.JFrame implements ActionListener {
-    private Connection conn = new koneksi().connect();
+public final class Dokter_PoliOld extends javax.swing.JFrame implements ActionListener {
+    private final Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     List<String> jenisLayanan;
-
-    public Spesialis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    ResultSet hasilDokter;
     protected void datatable(){
-        Object[] Baris = {"ID", "Nama", "Kategori", "Deskripsi", "Thn.Pelatihan", "Aktif"};
+        Object[] Baris = {"ID", "Dokter.ID", "Poli.ID", "Spesialis.ID", "Status"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
 
         try {
-            String sql = "SELECT * FROM spesialis where kategori like '%" + cariitem + "%' or nama like '%" + cariitem + "%' order by id asc";
+            String sql = "SELECT * FROM dokter_poli where id like '%" + cariitem + "%' order by id asc";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
 
@@ -41,13 +38,12 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
                     hasil.getString(2),
                     hasil.getString(3),
                     hasil.getString(4),
-                    hasil.getString(5),
-                    hasil.getString(6)
+                    hasil.getString(5)
                 });
             }
 
             tblplgn.setModel(tabmode);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
         }
     }
@@ -58,45 +54,59 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     
     protected void kosong(){
         txtid.setText("");
-        txtnm.setText("");
-        txtDesc.setText("");
+//        txtiddok.setText("");
+//        txtidspesial.setText("");
         chkActive.setEnabled(false);
         chkActive.setSelected(true);
-        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(
+                
+        try {
+            String sql = "SELECT * FROM spesialis";
+            Statement stat = conn.createStatement();
+            hasilDokter = stat.executeQuery(sql);
+            while (hasilDokter.next()){
+                String strValue = hasilDokter.getString(2);
+                jenisLayanan.add(strValue);
+//                hasilSpesialis.getString(2);
+            }
+        } catch (SQLException e) {
+            System.out.print("strValue : " + e);
+            JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
+        }
+        cmbDokter.setModel(new javax.swing.DefaultComboBoxModel<>(
             jenisLayanan.toArray(new String[0])
         ));
-        txtThnPelatihan.setText("");
+//        txtidpoli.setText("");
         txtcari.setText("");
         buttonGroup1.clearSelection();
     }    
     /**
      * Creates new form Pelanggan
      */
-    public Spesialis(Poliklinik parent, Dokter docterParent) {
+    public Dokter_PoliOld() {
         initComponents();
-        if (parent != null || docterParent != null) {
-            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    if (parent != null) {
-                        parent.setEnabled(true);
-                        parent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        parent.datatable();
-                        parent.kosong();
-                        setVisible(false);
-                    }
-
-                    if (docterParent != null) {
-                        docterParent.setEnabled(true);
-                        docterParent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        docterParent.datatable();
-                        docterParent.kosong();
-                        setVisible(false);
-                    }
-                }
-            });
-        }
+//        if (parent != null || docterParent != null) {
+//            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//            addWindowListener(new java.awt.event.WindowAdapter() {
+//                @Override
+//                public void windowClosing(java.awt.event.WindowEvent e) {
+//                    if (parent != null) {
+//                        parent.setEnabled(true);
+//                        parent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                        parent.datatable();
+//                        parent.kosong();
+//                        setVisible(false);
+//                    }
+//
+//                    if (docterParent != null) {
+//                        docterParent.setEnabled(true);
+//                        docterParent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                        docterParent.datatable();
+//                        docterParent.kosong();
+//                        setVisible(false);
+//                    }
+//                }
+//            });
+//        }
         jenisLayanan = new ArrayList<>();
 
         jenisLayanan.add("Medis");
@@ -134,21 +144,16 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         jLabel2 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtnm = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         chkActive = new javax.swing.JCheckBox();
-        cmbCat = new javax.swing.JComboBox<>();
-        txtThnPelatihan = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtDesc = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        cmbDokter = new javax.swing.JComboBox<>();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bsimpan.setText("Simpan");
         bsimpan.addActionListener();
-        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 293, -1, -1));
+        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel1.setText("Data Spesialis");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
@@ -168,78 +173,65 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         tblplgn.addMouseListener();
         jScrollPane1.setViewportView(tblplgn);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 351, 869, 275));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 869, 275));
 
         txtcari.addKeyListener();
-        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 322, 140, -1));
+        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, -1));
 
         bcari.setText("Cari");
         bcari.addActionListener();
-        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 322, -1, -1));
+        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
 
         bubah.setText("Ubah");
         bubah.addActionListener();
-        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 293, -1, -1));
+        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         bhapus.setText("Hapus");
         bhapus.addActionListener();
-        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 293, -1, -1));
+        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         bbatal.setText("Batal");
         bbatal.addActionListener();
-        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 293, -1, -1));
+        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
 
         bkeluar.setText("Keluar");
         bkeluar.addActionListener();
-        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 293, -1, -1));
+        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
-        jLabel2.setText("ID Spesialis");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
+        jLabel2.setText("ID Poli");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         txtid.setEnabled(false);
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 240, -1));
 
-        jLabel3.setText("Nama Spesialis");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
-        getContentPane().add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
+        jLabel3.setText("ID Dokter");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel4.setText("Kategori");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
-
-        jLabel5.setText("Deskripsi");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 121, -1, -1));
-
-        jLabel6.setText("Tahun pelatihan");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 222, -1, -1));
+        jLabel5.setText("ID Spesialis");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         chkActive.setSelected(true);
         chkActive.setText("Status Aktif");
         chkActive.setEnabled(false);
         chkActive.setIconTextGap(8);
         chkActive.addActionListener();
-        getContentPane().add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 254, -1, -1));
+        getContentPane().add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
-        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medis", "Bedah", "Penunjang", "Gigi", "Kesehatan Jiwa" }));
-        getContentPane().add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 87, 246, -1));
+        jLabel7.setText("ID Poli");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 70, 10));
 
-        txtThnPelatihan.addActionListener();
-        getContentPane().add(txtThnPelatihan, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 219, 246, -1));
-
-        txtDesc.setColumns(20);
-        txtDesc.setRows(5);
-        jScrollPane2.setViewportView(txtDesc);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 121, 246, -1));
+        cmbDokter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cmbDokter, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 240, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
         String sql = "insert into spesialis (nama, kategori, deskripsi, tahun_pelatihan, aktif) values (?,?,?,?,?)";
         try{
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtnm.getText());
-            stat.setString(2, cmbCat.getSelectedItem().toString());
-            stat.setString(3, txtDesc.getText());
-            stat.setInt(4, Integer.parseInt(txtThnPelatihan.getText()));
+//            stat.setString(1, txtiddok.getText());
+//            stat.setString(2, cmbCat.getSelectedItem().toString());
+//            stat.setString(3, txtidspesial.getText());
+//            stat.setInt(4, Integer.parseInt(txtidspesial.getText()));
             int status = chkActive.isSelected() ? 1 : 0;
             stat.setInt(5, status);
 
@@ -263,10 +255,10 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
             String sql = "update spesialis set nama =?, kategori=?, deskripsi=?, tahun_pelatihan=?, aktif=? where id='"+txtid.getText()+"'";
             PreparedStatement stat = conn.prepareStatement(sql);
 
-            stat.setString(1, txtnm.getText());
-            stat.setString(2, cmbCat.getSelectedItem().toString());
-            stat.setString(3, txtDesc.getText());
-            stat.setInt(4, Integer.parseInt(txtThnPelatihan.getText()));
+//            stat.setString(1, txtiddok.getText());
+//            stat.setString(2, cmbCat.getSelectedItem().toString());
+//            stat.setString(3, txtDesc.getText());
+//            stat.setInt(4, Integer.parseInt(txtidspesial.getText()));
             int status = chkActive.isSelected() ? 1 : 0;
             stat.setInt(5, status);
 
@@ -319,7 +311,7 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         String f = tabmode.getValueAt(bar, 5).toString();
 
         txtid.setText(a);
-        txtnm.setText(b);
+//        txtiddok.setText(b);
         
         List<String> hasil = new ArrayList<>();
         hasil.add(c);
@@ -330,13 +322,13 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
             }
         }
 
-        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(
-            hasil.toArray(new String[0])
-//           new String[] { "Pilih", "Rawat Jalan", "Rawat Inap" }
-        ));
+//        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(
+//            hasil.toArray(new String[0])
+////           new String[] { "Pilih", "Rawat Jalan", "Rawat Inap" }
+//        ));
         
-        txtDesc.setText(d);
-        txtThnPelatihan.setText(e);
+//        txtDesc.setText(d);
+//        txtidspesial.setText(e);
         
         chkActive.setEnabled(true);
         chkActive.setSelected(f.equals("1"));
@@ -356,10 +348,6 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_chkActiveActionPerformed
 
-    private void txtThnPelatihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThnPelatihanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtThnPelatihanActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
@@ -370,21 +358,16 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bubah;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkActive;
-    private javax.swing.JComboBox<String> cmbCat;
+    private javax.swing.JComboBox<String> cmbDokter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblplgn;
-    private javax.swing.JTextArea txtDesc;
-    private javax.swing.JTextField txtThnPelatihan;
     private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtnm;
     // End of variables declaration//GEN-END:variables
 
     @Override

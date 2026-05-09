@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package tugasproject;
 
@@ -8,22 +9,17 @@ import dokter.Dokter;
 import dokter.Dokter_Poli;
 import dokter.Poliklinik;
 import dokter.Spesialis;
-import dokter.Dokter_PoliOld;
-import javax.swing.JFrame;
-//import pasien.Pasien;
 
 /**
  *
- * @author jeremiamanogi
+ * @author Rino Sains
  */
-public class FormOpsi extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormOpsi.class.getName());
+public class FormOpsi2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormOpsi
+     * Creates new form FormOpsi2
      */
-    public FormOpsi() {
+    public FormOpsi2() {
         initComponents();
     }
 
@@ -40,8 +36,8 @@ public class FormOpsi extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,19 +45,39 @@ public class FormOpsi extends javax.swing.JFrame {
         jLabel1.setText("Form Opsi (Sementara)");
 
         jButton1.setText("Dokter");
-        jButton1.addActionListener();
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Poliklinik");
-        jButton2.addActionListener();
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Spesialis");
-        jButton3.addActionListener();
-
-        jButton4.setText("Dokter Poli");
-        jButton4.addActionListener();
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Pasien");
-        jButton5.addActionListener();
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Dokter Poli");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,27 +114,11 @@ public class FormOpsi extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Spesialis spesies = new Spesialis();
-        spesies.setLocationRelativeTo(null);
-        spesies.setSize(925, 700); // sesuaikan ukuran
-        spesies.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-//        Pasien pasien = new Pasien();
-        Dokter_Poli dokterPoli = new Dokter_Poli();
-        dokterPoli.setLocationRelativeTo(null);
-        dokterPoli.setSize(925, 700); // sesuaikan ukuran
-        dokterPoli.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -135,9 +135,25 @@ public class FormOpsi extends javax.swing.JFrame {
         poliklinik.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Spesialis spesies = new Spesialis();
+        spesies.setLocationRelativeTo(null);
+        spesies.setSize(925, 700); // sesuaikan ukuran
+        spesies.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //        Pasien pasien = new Pasien();
+        Dokter_Poli dokterPoli = new Dokter_Poli();
+        dokterPoli.setLocationRelativeTo(null);
+        dokterPoli.setSize(925, 700); // sesuaikan ukuran
+        dokterPoli.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,13 +171,23 @@ public class FormOpsi extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FormOpsi2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormOpsi2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormOpsi2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormOpsi2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormOpsi().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FormOpsi2().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
