@@ -186,38 +186,34 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
         chkActive.setText("Status Aktif");
         chkActive.setEnabled(false);
         chkActive.setIconTextGap(8);
-        chkActive.addActionListener(this::chkActiveActionPerformed);
+        chkActive.addActionListener();
         getContentPane().add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
 
         bsimpan.setText("Simpan");
-        bsimpan.addActionListener(this::bsimpanActionPerformed);
+        bsimpan.addActionListener();
         getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 293, -1, -1));
 
         bubah.setText("Ubah");
-        bubah.addActionListener(this::bubahActionPerformed);
+        bubah.addActionListener();
         getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 293, -1, -1));
 
         bhapus.setText("Hapus");
-        bhapus.addActionListener(this::bhapusActionPerformed);
+        bhapus.addActionListener();
         getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 293, -1, -1));
 
         bbatal.setText("Batal");
-        bbatal.addActionListener(this::bbatalActionPerformed);
+        bbatal.addActionListener();
         getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 293, -1, -1));
 
         bkeluar.setText("Keluar");
-        bkeluar.addActionListener(this::bkeluarActionPerformed);
+        bkeluar.addActionListener();
         getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 293, -1, -1));
 
-        txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtcariKeyPressed(evt);
-            }
-        });
+        txtcari.addKeyListener();
         getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 322, 140, -1));
 
         bcari.setText("Cari");
-        bcari.addActionListener(this::bcariActionPerformed);
+        bcari.addActionListener();
         getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 322, -1, -1));
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
@@ -231,23 +227,14 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblplgn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                tblplgnMouseMoved(evt);
-            }
-        });
-        tblplgn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblplgnMouseClicked(evt);
-            }
-        });
+        tblplgn.addMouseMotionListener();
+        tblplgn.addMouseListener();
         jScrollPane1.setViewportView(tblplgn);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 351, 869, 275));
 
         btnBukaPoliklinik.setText("Lihat Form Spesialis");
-        btnBukaPoliklinik.setActionCommand("Lihat Form Spesialis");
-        btnBukaPoliklinik.addActionListener(this::btnBukaPoliklinikActionPerformed);
+        btnBukaPoliklinik.addActionListener();
         getContentPane().add(btnBukaPoliklinik, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
         jLabel8.setText("<html>Jika Spesialis Tidak dalam Pilihan<br>Tambahkan di Form Spesialis</html>");

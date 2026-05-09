@@ -18,7 +18,7 @@ import koneksi.koneksi;
  * @author jeremiamanogi
  */
 public class Poliklinik extends javax.swing.JFrame implements ActionListener {
-    private Connection conn = new koneksi().connect();
+    private final Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     List<String> jenisLayanan;
     ResultSet hasilSpesialis;
@@ -135,14 +135,20 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
         cmbSpes = new javax.swing.JComboBox<>();
         btnBukaPoliklinik = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bsimpan.setText("Simpan");
-        bsimpan.addActionListener(this::bsimpanActionPerformed);
-        add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        // bsimpan.addActionListener();
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
+
+        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel1.setText("Data Poliklinik");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,6 +161,8 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        // tblplgn.addMouseMotionListener();
+        // tblplgn.addMouseListener();
         tblplgn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 tblplgnMouseMoved(evt);
@@ -165,55 +173,87 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                 tblplgnMouseClicked(evt);
             }
         });
+
         jScrollPane1.setViewportView(tblplgn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 869, 275));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 869, 275));
 
+        // txtcari.addKeyListener();
         txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtcariKeyPressed(evt);
             }
         });
-        add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, -1));
+        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, -1));
 
         bcari.setText("Cari");
-        bcari.addActionListener(this::bcariActionPerformed);
-        add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        // bcari.addActionListener();
+        bcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
         bubah.setText("Ubah");
-        bubah.addActionListener(this::bubahActionPerformed);
-        add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        // bubah.addActionListener();
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
         bhapus.setText("Hapus");
-        bhapus.addActionListener(this::bhapusActionPerformed);
-        add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        // bhapus.addActionListener();
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         bbatal.setText("Batal");
-        bbatal.addActionListener(this::bbatalActionPerformed);
-        add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+        // bbatal.addActionListener();
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
 
         bkeluar.setText("Keluar");
-        bkeluar.addActionListener(this::bkeluarActionPerformed);
-        add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
+        // bkeluar.addActionListener();
+        bkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bkeluarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
 
         jLabel2.setText("ID Poliklinik");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         txtid.setEnabled(false);
-        add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
 
         jLabel3.setText("Nama Poliklinik");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
-        add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
+        getContentPane().add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
 
         jLabel4.setText("Nama Spesialis");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
 
-        add(cmbSpes, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 87, 246, -1));
+        getContentPane().add(cmbSpes, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 87, 246, -1));
 
         btnBukaPoliklinik.setText("Lihat Tabel Spesialis");
-        btnBukaPoliklinik.addActionListener(this::btnBukaPoliklinikActionPerformed);
-        add(btnBukaPoliklinik, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
+        // btnBukaPoliklinik.addActionListener();
+        btnBukaPoliklinik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBukaPoliklinikActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBukaPoliklinik, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
