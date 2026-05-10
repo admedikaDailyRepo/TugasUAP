@@ -5,10 +5,14 @@
 package tugasproject;
 
 import dokter.Dokter;
+import dokter.DokterOld;
 import dokter.Poliklinik;
+import dokter.PoliklinikOld;
 import dokter.Spesialis;
+import dokter.SpesialisOld;
 import javax.swing.JFrame;
 import pasien.Pasien;
+import pasien.PasienOld;
 
 /**
  *

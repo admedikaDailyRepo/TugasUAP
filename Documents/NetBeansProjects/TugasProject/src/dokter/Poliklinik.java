@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package dokter;
 import java.awt.event.ActionEvent;
@@ -15,10 +16,11 @@ import javax.swing.JFrame;
 import koneksi.koneksi;
 /**
  *
- * @author jeremiamanogi
+ * @author Acer
  */
-public class Poliklinik extends javax.swing.JFrame implements ActionListener {
-    private final Connection conn = new koneksi().connect();
+public class Poliklinik extends javax.swing.JFrame {
+
+    private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     List<String> jenisLayanan;
     ResultSet hasilSpesialis;
@@ -93,7 +95,7 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
         }
         txtcari.setText("");
-        buttonGroup1.clearSelection();
+//        buttonGroup1.clearSelection();
     }    
     /**
      * Creates new form Pelanggan
@@ -107,6 +109,7 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
        
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +119,6 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         bsimpan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -134,21 +136,18 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
         jLabel4 = new javax.swing.JLabel();
         cmbSpes = new javax.swing.JComboBox<>();
         btnBukaPoliklinik = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bsimpan.setText("Simpan");
-        // bsimpan.addActionListener();
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bsimpanActionPerformed(evt);
             }
         });
 
-        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
         jLabel1.setText("Data Poliklinik");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,8 +160,6 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        // tblplgn.addMouseMotionListener();
-        // tblplgn.addMouseListener();
         tblplgn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 tblplgnMouseMoved(evt);
@@ -173,87 +170,153 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                 tblplgnMouseClicked(evt);
             }
         });
-
         jScrollPane1.setViewportView(tblplgn);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 869, 275));
-
-        // txtcari.addKeyListener();
         txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtcariKeyPressed(evt);
             }
         });
-        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, -1));
 
         bcari.setText("Cari");
-        // bcari.addActionListener();
         bcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bcariActionPerformed(evt);
             }
         });
-        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
         bubah.setText("Ubah");
-        // bubah.addActionListener();
         bubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bubahActionPerformed(evt);
             }
         });
-        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
         bhapus.setText("Hapus");
-        // bhapus.addActionListener();
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bhapusActionPerformed(evt);
             }
         });
-        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         bbatal.setText("Batal");
-        // bbatal.addActionListener();
         bbatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bbatalActionPerformed(evt);
             }
         });
-        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
 
         bkeluar.setText("Keluar");
-        // bkeluar.addActionListener();
         bkeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bkeluarActionPerformed(evt);
             }
         });
-        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
 
         jLabel2.setText("ID Poliklinik");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         txtid.setEnabled(false);
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
 
         jLabel3.setText("Nama Poliklinik");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
-        getContentPane().add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
 
         jLabel4.setText("Nama Spesialis");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
-
-        getContentPane().add(cmbSpes, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 87, 246, -1));
 
         btnBukaPoliklinik.setText("Lihat Tabel Spesialis");
-        // btnBukaPoliklinik.addActionListener();
         btnBukaPoliklinik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBukaPoliklinikActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBukaPoliklinik, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
+
+        jButton2.setText("jButton2");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(76, 76, 76)
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(55, 55, 55)
+                        .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(53, 53, 53)
+                        .addComponent(cmbSpes, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBukaPoliklinik))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bsimpan)
+                                .addGap(5, 5, 5)
+                                .addComponent(bubah)
+                                .addGap(19, 19, 19)
+                                .addComponent(bhapus)
+                                .addGap(13, 13, 13)
+                                .addComponent(bbatal)
+                                .addGap(19, 19, 19)
+                                .addComponent(bkeluar)
+                                .addGap(21, 21, 21)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(bcari))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 26, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(cmbSpes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnBukaPoliklinik)))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bsimpan)
+                    .addComponent(bubah)
+                    .addComponent(bhapus)
+                    .addComponent(bbatal)
+                    .addComponent(bkeluar)
+                    .addComponent(jButton2))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bcari))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
@@ -274,11 +337,10 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                         stat.setInt(2, getId);
                         break;
                     }
-                }  
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
             }
-
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
@@ -295,6 +357,46 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblplgnMouseMoved
 
+    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
+        int bar = tblplgn.getSelectedRow();
+        //        Object[] Baris = {"ID", "Nama Poliklinik", "Nama SpesialisOld", "Nama kategori", "Deskripsi Kategori"};
+        String a = tabmode.getValueAt(bar, 0).toString();
+        String b = tabmode.getValueAt(bar, 1).toString();
+        String c = tabmode.getValueAt(bar, 2).toString();
+
+        txtid.setText(a);
+        txtnm.setText(b);
+
+        List<String> hasil = new ArrayList<>();
+        hasil.add(c);
+
+        for (String item : jenisLayanan) {
+            if (!item.contains(c)) {
+                hasil.add(item);
+            }
+        }
+
+        cmbSpes.setModel(new javax.swing.DefaultComboBoxModel<>(
+            hasil.toArray(new String[0])
+        ));
+
+        //        txtDesc.setText(d);
+        //        txtThnPelatihan.setText(e);
+        //
+        //        chkActive.setEnabled(true);
+        //        chkActive.setSelected(f.equals("1"));
+    }//GEN-LAST:event_tblplgnMouseClicked
+
+    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            datatable();
+        }
+    }//GEN-LAST:event_txtcariKeyPressed
+
+    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
+        datatable();
+    }//GEN-LAST:event_bcariActionPerformed
+
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         try{
             String sql = "update poliklinik set nama =?, id_spesialis_utama=? where id='"+txtid.getText()+"'";
@@ -304,14 +406,14 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
             String getSelectedValue = cmbSpes.getSelectedItem().toString();
             int getId;
             try {
-//                String sql2 = "SELECT * FROM spesialis";
-//                Statement stat2 = conn.createStatement();
-//                hasilSpesialis = stat.executeQuery(sql);
+                //                String sql2 = "SELECT * FROM spesialis";
+                //                Statement stat2 = conn.createStatement();
+                //                hasilSpesialis = stat.executeQuery(sql);
 
                 String sql2 = "SELECT * FROM spesialis";
                 Statement stat2 = conn.createStatement();
                 hasilSpesialis = stat2.executeQuery(sql2);
-                
+
                 while (hasilSpesialis.next()){
                     String strValue = hasilSpesialis.getString(2);
                     if (getSelectedValue.equals(strValue)) {
@@ -319,7 +421,7 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
                         stat.setInt(2, getId);
                         break;
                     }
-                }  
+                }
             } catch (Exception e) {
                 System.out.print("stat : " + e.toString());
                 JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
@@ -364,56 +466,50 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
         // dispose();
     }//GEN-LAST:event_bkeluarActionPerformed
 
-    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
-        int bar = tblplgn.getSelectedRow();
-//        Object[] Baris = {"ID", "Nama Poliklinik", "Nama Spesialis", "Nama kategori", "Deskripsi Kategori"};
-        String a = tabmode.getValueAt(bar, 0).toString();
-        String b = tabmode.getValueAt(bar, 1).toString();
-        String c = tabmode.getValueAt(bar, 2).toString();
-
-
-        txtid.setText(a);
-        txtnm.setText(b);
-        
-        List<String> hasil = new ArrayList<>();
-        hasil.add(c);
-
-        for (String item : jenisLayanan) {
-            if (!item.contains(c)) {
-                hasil.add(item);
-            }
-        }
-
-        cmbSpes.setModel(new javax.swing.DefaultComboBoxModel<>(
-            hasil.toArray(new String[0])
-        ));
-        
-//        txtDesc.setText(d);
-//        txtThnPelatihan.setText(e);
-//        
-//        chkActive.setEnabled(true);
-//        chkActive.setSelected(f.equals("1"));
-    }//GEN-LAST:event_tblplgnMouseClicked
-
-    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
-        datatable();
-    }//GEN-LAST:event_bcariActionPerformed
-
-    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            datatable();
-        }
-    }//GEN-LAST:event_txtcariKeyPressed
-
     private void btnBukaPoliklinikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBukaPoliklinikActionPerformed
         this.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         Spesialis spesies = new Spesialis(this, null);
-        spesies.setLocationRelativeTo(null); 
+        spesies.setLocationRelativeTo(null);
         spesies.setSize(925, 700); // sesuaikan ukuran
         spesies.setVisible(true);
     }//GEN-LAST:event_btnBukaPoliklinikActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Poliklinik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Poliklinik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Poliklinik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Poliklinik.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Poliklinik().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
@@ -423,8 +519,8 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton btnBukaPoliklinik;
     private javax.swing.JButton bubah;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbSpes;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -435,9 +531,4 @@ public class Poliklinik extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnm;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

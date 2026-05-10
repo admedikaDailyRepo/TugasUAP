@@ -5,9 +5,9 @@
  */
 package tugasproject;
 
-import dokter.Dokter;
-import dokter.Poliklinik;
-import dokter.Spesialis;
+import dokter.DokterOld;
+import dokter.PoliklinikOld;
+import dokter.SpesialisOld;
 import javax.swing.JFrame;
 
 /**
@@ -21,7 +21,7 @@ public class TugasProject {
      */
     public static void main(String[] args) {
 //        System.out.println("Hello World!");
-//        JFrame frame = new JFrame("Form Spesialis");
+//        JFrame frame = new JFrame("Form SpesialisOld");
 
         FormOpsi panel = new FormOpsi(); // panggil class kamu
 //        Barang panel = new Barang();

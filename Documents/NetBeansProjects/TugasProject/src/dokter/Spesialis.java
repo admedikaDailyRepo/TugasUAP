@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package dokter;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ import javax.swing.JFrame;
 import koneksi.koneksi;
 /**
  *
- * @author jeremiamanogi
+ * @author Acer
  */
 public class Spesialis extends javax.swing.JFrame implements ActionListener {
     private Connection conn = new koneksi().connect();
@@ -63,7 +64,7 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         ));
         txtThnPelatihan.setText("");
         txtcari.setText("");
-        buttonGroup1.clearSelection();
+//        buttonGroup1.clearSelection();
     }    
     /**
      * Creates new form Pelanggan
@@ -106,7 +107,6 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         datatable();
        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +116,6 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         bsimpan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -140,14 +139,16 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bsimpan.setText("Simpan");
-        bsimpan.addActionListener(this::bsimpanActionPerformed);
-        add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 293, -1, -1));
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Data Spesialis");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,72 +173,177 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         });
         jScrollPane1.setViewportView(tblplgn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 351, 869, 275));
-
         txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtcariKeyPressed(evt);
             }
         });
-        add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 322, 140, -1));
 
         bcari.setText("Cari");
-        bcari.addActionListener(this::bcariActionPerformed);
-        add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 322, -1, -1));
+        bcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariActionPerformed(evt);
+            }
+        });
 
         bubah.setText("Ubah");
-        bubah.addActionListener(this::bubahActionPerformed);
-        add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 293, -1, -1));
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
 
         bhapus.setText("Hapus");
-        bhapus.addActionListener(this::bhapusActionPerformed);
-        add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 293, -1, -1));
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
 
         bbatal.setText("Batal");
-        bbatal.addActionListener(this::bbatalActionPerformed);
-        add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 293, -1, -1));
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         bkeluar.setText("Keluar");
-        bkeluar.addActionListener(this::bkeluarActionPerformed);
-        add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 293, -1, -1));
+        bkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bkeluarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("ID Spesialis");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         txtid.setEnabled(false);
-        add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
 
         jLabel3.setText("Nama Spesialis");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
-        add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
 
         jLabel4.setText("Kategori");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
 
         jLabel5.setText("Deskripsi");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 121, -1, -1));
 
         jLabel6.setText("Tahun pelatihan");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 222, -1, -1));
 
         chkActive.setSelected(true);
         chkActive.setText("Status Aktif");
         chkActive.setEnabled(false);
         chkActive.setIconTextGap(8);
-        chkActive.addActionListener(this::chkActiveActionPerformed);
-        add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 254, -1, -1));
+        chkActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkActiveActionPerformed(evt);
+            }
+        });
 
         cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medis", "Bedah", "Penunjang", "Gigi", "Kesehatan Jiwa" }));
-        add(cmbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 87, 246, -1));
 
-        txtThnPelatihan.addActionListener(this::txtThnPelatihanActionPerformed);
-        add(txtThnPelatihan, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 219, 246, -1));
+        txtThnPelatihan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThnPelatihanActionPerformed(evt);
+            }
+        });
 
         txtDesc.setColumns(20);
         txtDesc.setRows(5);
         jScrollPane2.setViewportView(txtDesc);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 121, 246, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(74, 74, 74)
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(53, 53, 53)
+                        .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(93, 93, 93)
+                        .addComponent(cmbCat, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(89, 89, 89)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(48, 48, 48)
+                        .addComponent(txtThnPelatihan, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(chkActive))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bsimpan)
+                        .addGap(5, 5, 5)
+                        .addComponent(bubah)
+                        .addGap(17, 17, 17)
+                        .addComponent(bhapus)
+                        .addGap(11, 11, 11)
+                        .addComponent(bbatal)
+                        .addGap(17, 17, 17)
+                        .addComponent(bkeluar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(bcari))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6))
+                    .addComponent(txtThnPelatihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(chkActive)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bsimpan)
+                    .addComponent(bubah)
+                    .addComponent(bhapus)
+                    .addComponent(bbatal)
+                    .addComponent(bkeluar))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bcari))
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
@@ -265,6 +371,49 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     private void tblplgnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_tblplgnMouseMoved
+
+    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
+        int bar = tblplgn.getSelectedRow();
+        String a = tabmode.getValueAt(bar, 0).toString();
+        String b = tabmode.getValueAt(bar, 1).toString();
+        String c = tabmode.getValueAt(bar, 2).toString();
+        String d = tabmode.getValueAt(bar, 3).toString();
+        String e = tabmode.getValueAt(bar, 4).toString();
+        String f = tabmode.getValueAt(bar, 5).toString();
+
+        txtid.setText(a);
+        txtnm.setText(b);
+
+        List<String> hasil = new ArrayList<>();
+        hasil.add(c);
+
+        for (String item : jenisLayanan) {
+            if (!item.contains(c)) {
+                hasil.add(item);
+            }
+        }
+
+        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(
+            hasil.toArray(new String[0])
+            //           new String[] { "Pilih", "Rawat Jalan", "Rawat Inap" }
+        ));
+
+        txtDesc.setText(d);
+        txtThnPelatihan.setText(e);
+
+        chkActive.setEnabled(true);
+        chkActive.setSelected(f.equals("1"));
+    }//GEN-LAST:event_tblplgnMouseClicked
+
+    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            datatable();
+        }
+    }//GEN-LAST:event_txtcariKeyPressed
+
+    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
+        datatable();
+    }//GEN-LAST:event_bcariActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         try{
@@ -317,49 +466,6 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         // dispose();
     }//GEN-LAST:event_bkeluarActionPerformed
 
-    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
-        int bar = tblplgn.getSelectedRow();
-        String a = tabmode.getValueAt(bar, 0).toString();
-        String b = tabmode.getValueAt(bar, 1).toString();
-        String c = tabmode.getValueAt(bar, 2).toString();
-        String d = tabmode.getValueAt(bar, 3).toString();
-        String e = tabmode.getValueAt(bar, 4).toString();
-        String f = tabmode.getValueAt(bar, 5).toString();
-
-        txtid.setText(a);
-        txtnm.setText(b);
-        
-        List<String> hasil = new ArrayList<>();
-        hasil.add(c);
-
-        for (String item : jenisLayanan) {
-            if (!item.contains(c)) {
-                hasil.add(item);
-            }
-        }
-
-        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(
-            hasil.toArray(new String[0])
-//           new String[] { "Pilih", "Rawat Jalan", "Rawat Inap" }
-        ));
-        
-        txtDesc.setText(d);
-        txtThnPelatihan.setText(e);
-        
-        chkActive.setEnabled(true);
-        chkActive.setSelected(f.equals("1"));
-    }//GEN-LAST:event_tblplgnMouseClicked
-
-    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
-        datatable();
-    }//GEN-LAST:event_bcariActionPerformed
-
-    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            datatable();
-        }
-    }//GEN-LAST:event_txtcariKeyPressed
-
     private void chkActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkActiveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkActiveActionPerformed
@@ -368,6 +474,40 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtThnPelatihanActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Spesialis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Spesialis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Spesialis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Spesialis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Spesialis().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
@@ -376,7 +516,6 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bkeluar;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkActive;
     private javax.swing.JComboBox<String> cmbCat;
     private javax.swing.JLabel jLabel1;
@@ -396,7 +535,7 @@ public class Spesialis extends javax.swing.JFrame implements ActionListener {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -1,25 +1,27 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package pasien;
-import dokter.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
+
 /**
  *
- * @author jeremiamanogi
+ * @author Acer
  */
-public class Pasien extends javax.swing.JFrame implements ActionListener {
+public class Pasien extends javax.swing.JFrame {
     private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     List<String> jenisLayanan;
@@ -80,7 +82,7 @@ protected void datatable(){
         txtcari.setText("");
         txtAddresh.setText("");
         txtPhone.setText("");
-        buttonGroupRadio.clearSelection();
+        buttonGroup1.clearSelection();
         chkActive.setEnabled(false);
         chkActive.setSelected(true);
     }    
@@ -126,6 +128,7 @@ protected void datatable(){
        
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,7 +138,7 @@ protected void datatable(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupRadio = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         bsimpan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -174,14 +177,16 @@ protected void datatable(){
         jLabel13 = new javax.swing.JLabel();
         txtDob = new javax.swing.JTextField();
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bsimpan.setText("Simpan");
-        bsimpan.addActionListener(this::bsimpanActionPerformed);
-        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 293, -1, -1));
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Data Pasien");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,185 +211,300 @@ protected void datatable(){
         });
         jScrollPane1.setViewportView(tblplgn);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 351, 869, 275));
-
         txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtcariKeyPressed(evt);
             }
         });
-        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 322, 140, -1));
 
         bcari.setText("Cari");
-        bcari.addActionListener(this::bcariActionPerformed);
-        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 322, -1, -1));
+        bcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariActionPerformed(evt);
+            }
+        });
 
         bubah.setText("Ubah");
-        bubah.addActionListener(this::bubahActionPerformed);
-        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 293, -1, -1));
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
 
         bhapus.setText("Hapus");
-        bhapus.addActionListener(this::bhapusActionPerformed);
-        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 293, -1, -1));
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
 
         bbatal.setText("Batal");
-        bbatal.addActionListener(this::bbatalActionPerformed);
-        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 293, -1, -1));
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         bkeluar.setText("Keluar");
-        bkeluar.addActionListener(this::bkeluarActionPerformed);
-        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 293, -1, -1));
+        bkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bkeluarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("ID Pasien");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         txtid.setEnabled(false);
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 29, 246, -1));
 
         jLabel3.setText("Nama Panjang");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 58, -1, -1));
-        getContentPane().add(txtidentity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 246, -1));
 
         jLabel4.setText("Nomor Identitas");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 87, -1, -1));
 
         jLabel5.setText("Nomor Telepon");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
         jLabel6.setText("Nomor Rekam Medis");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         chkActive.setSelected(true);
         chkActive.setText("Status Aktif");
         chkActive.setEnabled(false);
         chkActive.setIconTextGap(8);
-        chkActive.addActionListener(this::chkActiveActionPerformed);
-        getContentPane().add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
+        chkActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkActiveActionPerformed(evt);
+            }
+        });
 
-        getContentPane().add(cmbGolonganDarah, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 246, -1));
-
-        txtRm.addActionListener(this::txtRmActionPerformed);
-        getContentPane().add(txtRm, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 246, -1));
+        txtRm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRmActionPerformed(evt);
+            }
+        });
 
         txtAddresh.setColumns(20);
         txtAddresh.setRows(5);
         jScrollPane2.setViewportView(txtAddresh);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 246, -1));
-        getContentPane().add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 58, 246, -1));
-
         jLabel7.setText("Nomor Induk Pegawai");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        txtNip.addActionListener(this::txtNipActionPerformed);
-        getContentPane().add(txtNip, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 246, -1));
+        txtNip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNipActionPerformed(evt);
+            }
+        });
 
-        txtPob.addActionListener(this::txtPobActionPerformed);
-        getContentPane().add(txtPob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 246, -1));
+        txtPob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPobActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Tempat Lahir");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel9.setText("Jenis Kelamin");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
 
-        txtPhone.addActionListener(this::txtPhoneActionPerformed);
-        getContentPane().add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 246, -1));
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Tanggal Lahir");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
 
-        buttonGroupRadio.add(rLaki);
+        buttonGroup1.add(rLaki);
         rLaki.setText("Laki-Laki");
-        rLaki.addActionListener(this::rLakiActionPerformed);
-        getContentPane().add(rLaki, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
+        rLaki.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rLakiActionPerformed(evt);
+            }
+        });
 
-        buttonGroupRadio.add(rPrempuan);
+        buttonGroup1.add(rPrempuan);
         rPrempuan.setText("Perempuan");
-        rPrempuan.addActionListener(this::rPrempuanActionPerformed);
-        getContentPane().add(rPrempuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
+        rPrempuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rPrempuanActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Jenis Nomor Identitas");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 121, -1, -1));
-
-        getContentPane().add(cmbIndentity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 246, -1));
 
         jLabel12.setText("Golongan Darah");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, -1, -1));
 
         jLabel13.setText("Alamat");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
-        txtDob.addActionListener(this::txtDobActionPerformed);
-        getContentPane().add(txtDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 246, -1));
+        txtDob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDobActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 898, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 14, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(87, 87, 87)
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(38, 38, 38)
+                            .addComponent(jLabel10)
+                            .addGap(62, 62, 62)
+                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(57, 57, 57)
+                            .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(38, 38, 38)
+                            .addComponent(jLabel9)
+                            .addGap(63, 63, 63)
+                            .addComponent(rLaki)
+                            .addGap(13, 13, 13)
+                            .addComponent(rPrempuan))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(53, 53, 53)
+                            .addComponent(txtidentity, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(34, 34, 34)
+                            .addComponent(jLabel12)
+                            .addGap(49, 49, 49)
+                            .addComponent(cmbGolonganDarah, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8))))
+                            .addGap(15, 15, 15)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbIndentity, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtRm, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNip, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPob, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(34, 34, 34)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel5))
+                            .addGap(52, 52, 52)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(564, 564, 564)
+                            .addComponent(chkActive))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(bsimpan)
+                            .addGap(5, 5, 5)
+                            .addComponent(bubah)
+                            .addGap(17, 17, 17)
+                            .addComponent(bhapus)
+                            .addGap(11, 11, 11)
+                            .addComponent(bbatal)
+                            .addGap(17, 17, 17)
+                            .addComponent(bkeluar))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(bcari))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 15, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 655, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 17, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(7, 7, 7)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(jLabel2))
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(jLabel10))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(6, 6, 6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addComponent(rLaki)
+                                .addComponent(rPrempuan))))
+                    .addGap(2, 2, 2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtidentity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12)
+                                .addComponent(cmbGolonganDarah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(jLabel11)
+                            .addGap(13, 13, 13)
+                            .addComponent(jLabel6)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel7)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel8))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(cmbIndentity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)
+                            .addComponent(txtRm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)
+                            .addComponent(txtNip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)
+                            .addComponent(txtPob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(84, 84, 84)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(18, 18, 18)
+                    .addComponent(chkActive)
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bsimpan)
+                        .addComponent(bubah)
+                        .addComponent(bhapus)
+                        .addComponent(bbatal)
+                        .addComponent(bkeluar))
+                    .addGap(4, 4, 4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bcari))
+                    .addGap(4, 4, 4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 18, Short.MAX_VALUE)))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /*
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-     String sql = "INSERT INTO pasien (" +
-                 "nama_panjang, nomor_identitas, jenis_nomor_identitas, " +
-                 "nomor_rekam_medis, nomor_induk_pegawai, tempat_lahir, tanggal_lahir, " +
-                 "jenis_kelamin, golongan_darah, alamat_lengkap, nomor_telepon, " +
-                 "id_perusahaan, nip_karyawan, status_aktif) " +
-                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-    try {
         
-        txtnm.setText("");
-        txtidentity.setText("");
-        txtRm.setText("");
-        txtNip.setText("");
-        txtPob.setText("");
-        txtDob.setText("");
-        txtcari.setText("");
-        txtAddresh.setText("");
-        txtPhone.setText("");
-        buttonGroupRadio.clearSelection();
-        chkActive.setEnabled(false);
-        chkActive.setSelected(true);
-
-        PreparedStatement stat = conn.prepareStatement(sql);
-
-        stat.setString(1, txtnm.getText());
-        stat.setString(2, txtNomorIdentitas.getText());
-        stat.setString(3, txtJenisIdentitas.getText()); // contoh: KTP
-        stat.setString(4, txtNoRM.getText());
-        stat.setString(5, txtNIP.getText());
-        stat.setString(6, txtTempatLahir.getText());
-
-        // format tanggal harus yyyy-MM-dd
-        stat.setDate(7, java.sql.Date.valueOf(txtTanggalLahir.getText()));
-
-        stat.setString(8, txtJenisKelamin.getText()); // Laki-laki / Perempuan
-        stat.setString(9, txtGolonganDarah.getText()); // A+, O-, dll
-        stat.setString(10, txtAlamat.getText());
-        stat.setString(11, txtTelepon.getText());
-
-        // id_perusahaan boleh null
-        if (txtPerusahaan.getText().isEmpty()) {
-            stat.setNull(12, java.sql.Types.INTEGER);
-        } else {
-            stat.setInt(13, null);
-        }
-
-        stat.setString(14, txtNipKaryawan.getText());
-
-        int status = chkActive.isSelected() ? 1 : 0;
-        stat.setInt(15, status);
-
-        stat.executeUpdate();
-
-        JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-        kosong();
-        txtId.requestFocus();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Data gagal disimpan: " + e.getMessage());
-    }
-
-    }//GEN-LAST:event_bsimpanActionPerformed
-*/
-    private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {                                        
     String sql = "INSERT INTO pasien (" +
                  "nama_panjang, nomor_identitas, jenis_nomor_identitas, " +
                  "nomor_rekam_medis, nomor_induk_pegawai, tempat_lahir, tanggal_lahir, " +
@@ -429,65 +549,108 @@ protected void datatable(){
     }
 
     datatable();
-    }
-    /*
-private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        
+    }//GEN-LAST:event_bsimpanActionPerformed
 
-}
-    */
     private void tblplgnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_tblplgnMouseMoved
 
+    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
+        int bar = tblplgn.getSelectedRow();
+        String a = tabmode.getValueAt(bar, 0).toString();
+        try {
+            String sql = "SELECT * FROM pasien where id = " + a;
+
+            Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+
+            while (hasil.next()){
+                txtid.setText(hasil.getString(1));
+                txtnm.setText(hasil.getString(2));
+                txtidentity.setText(hasil.getString(3));
+                txtRm.setText(hasil.getString(5));
+                txtNip.setText(hasil.getString(6));
+                txtPob.setText(hasil.getString(7));
+                txtDob.setText(hasil.getString(8));
+                txtAddresh.setText(hasil.getString(11));
+                txtPhone.setText(hasil.getString(12));
+                if ("Laki-Laki".equals(hasil.getString(9))) {
+                    rLaki.setSelected(true);
+                } else {
+                    rPrempuan.setSelected(true);
+                }
+                String aktif = hasil.getString(15);
+                chkActive.setEnabled(true);
+                chkActive.setSelected(aktif.equals("1"));
+            }
+
+            tblplgn.setModel(tabmode);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data gagal dipanggil: " + e.getMessage());
+        }
+    }//GEN-LAST:event_tblplgnMouseClicked
+
+    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            datatable();
+        }
+    }//GEN-LAST:event_txtcariKeyPressed
+
+    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
+        datatable();
+    }//GEN-LAST:event_bcariActionPerformed
+
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
-    String sql = "UPDATE pasien SET " +
-                 "nama_panjang=?, nomor_identitas=?, jenis_nomor_identitas=?, " +
-                 "nomor_rekam_medis=?, nomor_induk_pegawai=?, tempat_lahir=?, tanggal_lahir=?, " +
-                 "jenis_kelamin=?, golongan_darah=?, alamat_lengkap=?, nomor_telepon=?, status_aktif=? " +
-                 "WHERE id=?";
+        String sql = "UPDATE pasien SET " +
+        "nama_panjang=?, nomor_identitas=?, jenis_nomor_identitas=?, " +
+        "nomor_rekam_medis=?, nomor_induk_pegawai=?, tempat_lahir=?, tanggal_lahir=?, " +
+        "jenis_kelamin=?, golongan_darah=?, alamat_lengkap=?, nomor_telepon=?, status_aktif=? " +
+        "WHERE id=?";
 
-    try {
-        PreparedStatement stat = conn.prepareStatement(sql);
+        try {
+            PreparedStatement stat = conn.prepareStatement(sql);
 
-        stat.setString(1, txtnm.getText());
-        stat.setString(2, txtidentity.getText());
-        stat.setString(3, cmbIndentity.getSelectedItem().toString());
-        stat.setString(4, txtRm.getText());
-        stat.setString(5, txtNip.getText());
-        stat.setString(6, txtPob.getText());
+            stat.setString(1, txtnm.getText());
+            stat.setString(2, txtidentity.getText());
+            stat.setString(3, cmbIndentity.getSelectedItem().toString());
+            stat.setString(4, txtRm.getText());
+            stat.setString(5, txtNip.getText());
+            stat.setString(6, txtPob.getText());
 
-        // format: yyyy-MM-dd
-        stat.setDate(7, java.sql.Date.valueOf(txtDob.getText()));
+            // format: yyyy-MM-dd
+            stat.setDate(7, java.sql.Date.valueOf(txtDob.getText()));
 
-        String jenis = null;
-        if (rLaki.isSelected()) {
-            jenis = "Laki-laki"; // ⚠️ harus sama dengan enum DB
-        } else if (rPrempuan.isSelected()) {
-            jenis = "Perempuan";
+            String jenis = null;
+            if (rLaki.isSelected()) {
+                jenis = "Laki-laki"; // ⚠️ harus sama dengan enum DB
+            } else if (rPrempuan.isSelected()) {
+                jenis = "Perempuan";
+            }
+
+            stat.setString(8, jenis);
+            stat.setString(9, cmbGolonganDarah.getSelectedItem().toString());
+            stat.setString(10, txtAddresh.getText());
+            stat.setString(11, txtPhone.getText());
+
+            int status = chkActive.isSelected() ? 1 : 0;
+            stat.setInt(12, status);
+
+            // WHERE id = ?
+            stat.setInt(13, Integer.parseInt(txtid.getText()));
+
+            stat.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diupdate");
+            kosong();
+            txtnm.requestFocus();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data gagal diupdate: " + e.getMessage());
         }
 
-        stat.setString(8, jenis);
-        stat.setString(9, cmbGolonganDarah.getSelectedItem().toString());
-        stat.setString(10, txtAddresh.getText());
-        stat.setString(11, txtPhone.getText());
-
-        int status = chkActive.isSelected() ? 1 : 0;
-        stat.setInt(12, status);
-
-        // WHERE id = ?
-        stat.setInt(13, Integer.parseInt(txtid.getText()));
-
-        stat.executeUpdate();
-
-        JOptionPane.showMessageDialog(null, "Data berhasil diupdate");
-        kosong();
-        txtnm.requestFocus();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Data gagal diupdate: " + e.getMessage());
-    }
-
-    datatable();
+        datatable();
     }//GEN-LAST:event_bubahActionPerformed
 
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
@@ -516,93 +679,6 @@ private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {
     private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
         // dispose();
     }//GEN-LAST:event_bkeluarActionPerformed
-
-    private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgnMouseClicked
-        int bar = tblplgn.getSelectedRow();
-        String a = tabmode.getValueAt(bar, 0).toString();
-        try {
-            String sql = "SELECT * FROM pasien where id = " + a;
-
-            Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-
-            while (hasil.next()){
-               txtid.setText(hasil.getString(1));
-               txtnm.setText(hasil.getString(2));
-               txtidentity.setText(hasil.getString(3));
-               txtRm.setText(hasil.getString(5));
-               txtNip.setText(hasil.getString(6));
-               txtPob.setText(hasil.getString(7));
-               txtDob.setText(hasil.getString(8));
-               txtAddresh.setText(hasil.getString(11));
-               txtPhone.setText(hasil.getString(12));
-            if ("Laki-Laki".equals(hasil.getString(9))) {
-                rLaki.setSelected(true);
-            } else {
-                rPrempuan.setSelected(true);
-            }
-            String aktif = hasil.getString(15);
-               chkActive.setEnabled(true);
-               chkActive.setSelected(aktif.equals("1"));
-            }
-
-            tblplgn.setModel(tabmode);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Data gagal dipanggil: " + e.getMessage());
-        }
-    }//GEN-LAST:event_tblplgnMouseClicked
-    /*
-        Object[] Baris = {
-            "ID", 
-            "Nama Panjang", 
-            "Jenis Kelamin", 
-            "No. Telepon", 
-            "Tanggal Lahir", 
-            "Status"
-        };
-
-        tabmode = new DefaultTableModel(null, Baris);
-        String cariitem = txtcari.getText();
-
-        try {
-            String sql = "SELECT id, nama_panjang, jenis_kelamin, nomor_telepon, tanggal_lahir, status_aktif " +
-                         "FROM pasien " +
-                         "WHERE nama_panjang LIKE '%" + cariitem + "%' " +
-                         "OR nomor_identitas LIKE '%" + cariitem + "%' " +
-                         "ORDER BY id ASC";
-
-            Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-
-            while (hasil.next()){
-    //            String status = hasil.getInt("status_aktif") == 1 ? "Aktif" : "Tidak Aktif";
-
-                tabmode.addRow(new Object[]{
-                    hasil.getInt("id"),
-                    hasil.getString("nama_panjang"),
-                    hasil.getString("jenis_kelamin"),
-                    hasil.getString("nomor_telepon"),
-                    hasil.getDate("tanggal_lahir"),
-                    hasil.getInt("status_aktif")
-                });
-            }
-
-            tblplgn.setModel(tabmode);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Data gagal dipanggil: " + e.getMessage());
-        }
-    */
-    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
-        datatable();
-    }//GEN-LAST:event_bcariActionPerformed
-
-    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            datatable();
-        }
-    }//GEN-LAST:event_txtcariKeyPressed
 
     private void chkActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkActiveActionPerformed
         // TODO add your handling code here:
@@ -636,6 +712,41 @@ private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDobActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Pasien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Pasien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Pasien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Pasien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Pasien().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
@@ -644,7 +755,7 @@ private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton bkeluar;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
-    private javax.swing.ButtonGroup buttonGroupRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkActive;
     private javax.swing.JComboBox<String> cmbGolonganDarah;
     private javax.swing.JComboBox<String> cmbIndentity;
@@ -677,9 +788,4 @@ private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField txtidentity;
     private javax.swing.JTextField txtnm;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

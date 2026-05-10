@@ -1,9 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package dokter;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,14 +18,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
-
 /**
  *
- * @author jeremiamanogi
+ * @author Acer
  */
-public class Dokter extends javax.swing.JFrame implements ActionListener {
+public class Dokter extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dokter.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DokterOld.class.getName());
     private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     List<String> jenisLayanan;
@@ -101,7 +100,7 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
     }    
     
     /**
-     * Creates new form Dokter
+     * Creates new form DokterOld
      */
     public Dokter() {
         initComponents();
@@ -115,6 +114,13 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
     protected void aktif(){
         txtnm.requestFocus();
     }
+
+    /**
+     * Creates new form Dokter2
+     */
+//    public Dokter() {
+//        initComponents();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,69 +158,80 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
         cmbSpes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Data Dokter");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         txtid.setEnabled(false);
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 246, -1));
 
         jLabel2.setText("ID Dokter");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jLabel3.setText("Nama Dokter");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-        getContentPane().add(txtnm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 246, -1));
 
         jLabel4.setText("Email Dokter");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 246, -1));
 
         jLabel5.setText("Nomor Telefon Dokter");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 246, -1));
 
         jLabel6.setText("Spesialis Utama");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
-        getContentPane().add(txtThnLulus, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 246, -1));
 
         jLabel7.setText("Tahun Lulus");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         chkActive.setSelected(true);
         chkActive.setText("Status Aktif");
         chkActive.setEnabled(false);
         chkActive.setIconTextGap(8);
-        chkActive.addActionListener();
-        getContentPane().add(chkActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
+        chkActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkActiveActionPerformed(evt);
+            }
+        });
 
         bsimpan.setText("Simpan");
-        bsimpan.addActionListener();
-        getContentPane().add(bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 293, -1, -1));
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
 
         bubah.setText("Ubah");
-        bubah.addActionListener();
-        getContentPane().add(bubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 293, -1, -1));
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
 
         bhapus.setText("Hapus");
-        bhapus.addActionListener();
-        getContentPane().add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 293, -1, -1));
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
 
         bbatal.setText("Batal");
-        bbatal.addActionListener();
-        getContentPane().add(bbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 293, -1, -1));
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         bkeluar.setText("Keluar");
-        bkeluar.addActionListener();
-        getContentPane().add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 293, -1, -1));
+        bkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bkeluarActionPerformed(evt);
+            }
+        });
 
-        txtcari.addKeyListener();
-        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 322, 140, -1));
+        txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcariKeyPressed(evt);
+            }
+        });
 
         bcari.setText("Cari");
-        bcari.addActionListener();
-        getContentPane().add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 322, -1, -1));
+        bcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariActionPerformed(evt);
+            }
+        });
 
         tblplgn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,21 +244,144 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblplgn.addMouseMotionListener();
-        tblplgn.addMouseListener();
+        tblplgn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                tblplgnMouseMoved(evt);
+            }
+        });
+        tblplgn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblplgnMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblplgn);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 351, 869, 275));
-
         btnBukaPoliklinik.setText("Lihat Form Spesialis");
-        btnBukaPoliklinik.addActionListener();
-        getContentPane().add(btnBukaPoliklinik, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
+        btnBukaPoliklinik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBukaPoliklinikActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("<html>Jika Spesialis Tidak dalam Pilihan<br>Tambahkan di Form Spesialis</html>");
         jLabel8.setAlignmentY(1.0F);
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, 40));
 
-        getContentPane().add(cmbSpes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 250, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 903, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 14, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(127, 127, 127)
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(106, 106, 106)
+                            .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGap(54, 54, 54)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtphone, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(89, 89, 89)
+                            .addComponent(cmbSpes, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(btnBukaPoliklinik))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(111, 111, 111)
+                            .addComponent(txtThnLulus, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(chkActive))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(bsimpan)
+                            .addGap(5, 5, 5)
+                            .addComponent(bubah)
+                            .addGap(17, 17, 17)
+                            .addComponent(bhapus)
+                            .addGap(11, 11, 11)
+                            .addComponent(bbatal)
+                            .addGap(17, 17, 17)
+                            .addComponent(bkeluar))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(bcari))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 14, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 657, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 20, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(4, 4, 4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(txtnm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)
+                            .addComponent(txtphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addComponent(cmbSpes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBukaPoliklinik))
+                    .addGap(5, 5, 5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(txtThnLulus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addComponent(chkActive)
+                    .addGap(48, 48, 48)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bsimpan)
+                        .addComponent(bubah)
+                        .addComponent(bhapus)
+                        .addComponent(bbatal)
+                        .addComponent(bkeluar))
+                    .addGap(4, 4, 4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bcari))
+                    .addGap(4, 4, 4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 21, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,7 +410,7 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
                         stat.setInt(4, getId);
                         break;
                     }
-                }  
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
             }
@@ -311,12 +451,11 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
                         stat.setInt(4, getId);
                         break;
                     }
-                }  
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
             }
 
- 
             stat.setInt(5, Integer.parseInt(txtThnLulus.getText()));
             int status = chkActive.isSelected() ? 1 : 0;
             stat.setInt(6, status);
@@ -389,7 +528,6 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
         txtemail.setText(c);
         txtphone.setText(d);
 
-        
         List<String> hasil = new ArrayList<>();
         hasil.add(e);
 
@@ -421,27 +559,38 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Dokter().setVisible(true));
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Dokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Dokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Dokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Dokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Dokter().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
@@ -470,9 +619,4 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JTextField txtnm;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
