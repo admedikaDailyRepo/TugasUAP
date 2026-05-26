@@ -179,6 +179,9 @@ public class dataobat extends javax.swing.JFrame {
 
         jLabel5.setText("Id");
 
+        cmbCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dewasa", "anak anak" }));
+        cmbCat.addActionListener(this::cmbCatActionPerformed);
+
         chkObat.setSelected(true);
         chkObat.setText("Obat Ada");
 
@@ -343,52 +346,72 @@ public class dataobat extends javax.swing.JFrame {
     }//GEN-LAST:event_bkeluarActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-    // UNTUK GET NILAI COMBO BOX
     String jenis = cmbobat.getSelectedItem().toString();
+    String kategoriTerpilih = cmbCat.getSelectedItem().toString();
     
-    String sql = "insert into barang_obat_alkes (kode_barang, nama_barang, tipe_barang, id_kategori, satuan, kategori, harga_jual, is_active) values (?,?,?,?,?,?,?,?)";
-    try{
+    // Kembalikan ke query utuh 8 parameter agar semua kolom terisi rapi
+    String sql = "INSERT INTO barang_obat_alkes (kode_barang, nama_barang, tipe_barang, id_kategori, satuan, kategori, harga_jual, is_active) VALUES (?,?,?,?,?,?,?,?)";
+    
+    try {
         PreparedStatement stat = conn.prepareStatement(sql);
         stat.setString(1, txtcode.getText());
         stat.setString(2, txtnm.getText());
         stat.setString(3, jenis);
-//        stat.setString(4, txttelp.getText());
-            String getSelectedValue = cmbCat.getSelectedItem().toString();
-            int getIdCategory;
-            try {
-                String sql2 = "SELECT * FROM kategori_obat_alkes";
-                Statement stat2 = conn.createStatement();
-                hasilSpesialis = stat2.executeQuery(sql2);
-                while (hasilSpesialis.next()){
-                    String strValue = hasilSpesialis.getString(2);
-                    if (getSelectedValue.equals(strValue)) {
-                        getIdCategory = hasilSpesialis.getInt(1);
-                        stat.setInt(4, getIdCategory);
-                        break;
-                    }
-                }  
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "data gagal dipanggil" + e);
+
+        // --- PROSES CARI ID KATEGORI ---
+        int idKategoriForm = -1; 
+        String sqlCariId = "SELECT id FROM kategori_obat_alkes WHERE nama_kategori = ?"; 
+        try (PreparedStatement statCari = conn.prepareStatement(sqlCariId)) {
+            statCari.setString(1, kategoriTerpilih);
+            try (ResultSet rsCari = statCari.executeQuery()) {
+                if (rsCari.next()) {
+                    idKategoriForm = rsCari.getInt("id");
+                }
             }
-        stat.setString(5, null);
-        stat.setString(6, null);
-        stat.setString(7, null);
+   
+    if (idKategoriForm == -1) {
+            JOptionPane.showMessageDialog(null, "Error: Kategori '" + kategoriTerpilih + "' tidak ditemukan di database!");
+            return; 
+        }
+
+        stat.setInt(4, idKategoriForm);
+        // -------------------------------
+
+        // Kolom kosong kita isi strip atau kosong agar tampilannya di tabel tidak NULL putih kosong
+        stat.setString(5, "-"); // Kolom 5: satuan 
+        stat.setString(6, "-"); // Kolom 6: kategori 
+        
+        // --- DI SINI KITA TEMBAK HARGA JUALNYA ---
+        // Kamu bisa ganti angka 0.00 ini dengan harga default yang kamu mau (misal: 5000.00)
+        stat.setDouble(7, 0.00); 
+        
+        // Is_active (1 jika dicentang, 0 jika tidak)
         int status = chkObat.isSelected() ? 1 : 0;
         stat.setInt(8, status);
+        
+         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal mengambil data kategori: " + e.getMessage());
+        }
         stat.executeUpdate();
-        JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
         kosong();
         txtcode.requestFocus();
+        } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Data gagal disimpan: " + e.getMessage());
     }
-    catch (SQLException e){
-        JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
-    }
+    datatable(); // Memanggil ulang isi tabel agar langsung ter-refresh                                     
+
     datatable();                                     
     }//GEN-LAST:event_bsimpanActionPerformed
 
     private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
         datatable();
     }//GEN-LAST:event_bcariActionPerformed
+
+    private void cmbCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCatActionPerformed
+        // TODO add your handling code here:
+        String jenis = cmbCat.getSelectedItem().toString();
+    }//GEN-LAST:event_cmbCatActionPerformed
 
     private void tblplgnMouseClicked(java.awt.event.MouseEvent evt) {                                     
     int bar = tblplgn.getSelectedRow();
