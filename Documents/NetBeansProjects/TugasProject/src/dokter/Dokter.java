@@ -106,6 +106,14 @@ public class Dokter extends javax.swing.JFrame implements ActionListener {
     public Dokter() {
         initComponents();
         jenisLayanan = new ArrayList<>();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+//                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                setVisible(false);
+            }
+        });
         aktif();
         datatable();
         kosong();
